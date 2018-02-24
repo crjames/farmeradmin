@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.farmerassistant.mapper.SysUserMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.farmerassistant.model.SysUser" >
+    <id column="sys_userId" property="sysUserid" jdbcType="BIGINT" />
+    <result column="sys_userName" property="sysUsername" jdbcType="VARCHAR" />
+    <result column="sys_userPwd" property="sysUserpwd" jdbcType="VARCHAR" />
+    <result column="sys_userSex" property="sysUsersex" jdbcType="VARCHAR" />
+    <result column="sys_userResumeUrl" property="sysUserresumeurl" jdbcType="VARCHAR" />
+    <result column="sys_userEntryTime" property="sysUserentrytime" jdbcType="TIMESTAMP" />
+    <result column="sys_userLeaveTime" property="sysUserleavetime" jdbcType="TIMESTAMP" />
+    <result column="sys_userRank" property="sysUserrank" jdbcType="VARCHAR" />
+    <result column="sys_userJobNumber" property="sysUserjobnumber" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
+    <result column="sys_userStatus" property="sysUserstatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sys_userId, sys_userName, sys_userPwd, sys_userSex, sys_userResumeUrl, sys_userEntryTime, 
+    sys_userLeaveTime, sys_userRank, sys_userJobNumber, create_time, update_time, is_deleted, 
+    sys_userStatus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where sys_userId = #{sysUserid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_user
+    where sys_userId = #{sysUserid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.farmerassistant.model.SysUser" >
+    insert into sys_user (sys_userId, sys_userName, sys_userPwd, 
+      sys_userSex, sys_userResumeUrl, sys_userEntryTime, 
+      sys_userLeaveTime, sys_userRank, sys_userJobNumber, 
+      create_time, update_time, is_deleted, 
+      sys_userStatus)
+    values (#{sysUserid,jdbcType=BIGINT}, #{sysUsername,jdbcType=VARCHAR}, #{sysUserpwd,jdbcType=VARCHAR}, 
+      #{sysUsersex,jdbcType=VARCHAR}, #{sysUserresumeurl,jdbcType=VARCHAR}, #{sysUserentrytime,jdbcType=TIMESTAMP}, 
+      #{sysUserleavetime,jdbcType=TIMESTAMP}, #{sysUserrank,jdbcType=VARCHAR}, #{sysUserjobnumber,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BIT}, 
+      #{sysUserstatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.farmerassistant.model.SysUser" >
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sysUserid != null" >
+        sys_userId,
+      </if>
+      <if test="sysUsername != null" >
+        sys_userName,
+      </if>
+      <if test="sysUserpwd != null" >
+        sys_userPwd,
+      </if>
+      <if test="sysUsersex != null" >
+        sys_userSex,
+      </if>
+      <if test="sysUserresumeurl != null" >
+        sys_userResumeUrl,
+      </if>
+      <if test="sysUserentrytime != null" >
+        sys_userEntryTime,
+      </if>
+      <if test="sysUserleavetime != null" >
+        sys_userLeaveTime,
+      </if>
+      <if test="sysUserrank != null" >
+        sys_userRank,
+      </if>
+      <if test="sysUserjobnumber != null" >
+        sys_userJobNumber,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="sysUserstatus != null" >
+        sys_userStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sysUserid != null" >
+        #{sysUserid,jdbcType=BIGINT},
+      </if>
+      <if test="sysUsername != null" >
+        #{sysUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserpwd != null" >
+        #{sysUserpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUsersex != null" >
+        #{sysUsersex,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserresumeurl != null" >
+        #{sysUserresumeurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserentrytime != null" >
+        #{sysUserentrytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysUserleavetime != null" >
+        #{sysUserleavetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysUserrank != null" >
+        #{sysUserrank,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserjobnumber != null" >
+        #{sysUserjobnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="sysUserstatus != null" >
+        #{sysUserstatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.farmerassistant.model.SysUser" >
+    update sys_user
+    <set >
+      <if test="sysUsername != null" >
+        sys_userName = #{sysUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserpwd != null" >
+        sys_userPwd = #{sysUserpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUsersex != null" >
+        sys_userSex = #{sysUsersex,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserresumeurl != null" >
+        sys_userResumeUrl = #{sysUserresumeurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserentrytime != null" >
+        sys_userEntryTime = #{sysUserentrytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysUserleavetime != null" >
+        sys_userLeaveTime = #{sysUserleavetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysUserrank != null" >
+        sys_userRank = #{sysUserrank,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserjobnumber != null" >
+        sys_userJobNumber = #{sysUserjobnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="sysUserstatus != null" >
+        sys_userStatus = #{sysUserstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sys_userId = #{sysUserid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.farmerassistant.model.SysUser" >
+    update sys_user
+    set sys_userName = #{sysUsername,jdbcType=VARCHAR},
+      sys_userPwd = #{sysUserpwd,jdbcType=VARCHAR},
+      sys_userSex = #{sysUsersex,jdbcType=VARCHAR},
+      sys_userResumeUrl = #{sysUserresumeurl,jdbcType=VARCHAR},
+      sys_userEntryTime = #{sysUserentrytime,jdbcType=TIMESTAMP},
+      sys_userLeaveTime = #{sysUserleavetime,jdbcType=TIMESTAMP},
+      sys_userRank = #{sysUserrank,jdbcType=VARCHAR},
+      sys_userJobNumber = #{sysUserjobnumber,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      sys_userStatus = #{sysUserstatus,jdbcType=VARCHAR}
+    where sys_userId = #{sysUserid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,47 @@
+CREATE TABLE `assistant`.`sys_user` (
+  `sys_userId` BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `sys_userName` VARCHAR(120) NOT NULL DEFAULT '\"\"' COMMENT '用户名称',
+  `sys_userPwd` VARCHAR(128) NOT NULL DEFAULT '\"\"' COMMENT '密码',
+  `sys_userSex` VARCHAR(1) NOT NULL DEFAULT 0 COMMENT '性别：0-男；1-女',
+  `sys_userResumeUrl` VARCHAR(200) NULL COMMENT '人员简历文件路径',
+  `sys_userEntryTime` TIMESTAMP NULL COMMENT '入职时间',
+  `sys_userLeaveTime` TIMESTAMP NULL COMMENT '离职时间',
+  `sys_userRank` VARCHAR(10) NOT NULL DEFAULT 0 COMMENT '职级',
+  `sys_userJobNumber` VARCHAR(10) NOT NULL DEFAULT '9999999999' COMMENT '工号',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  `is_deleted` VARCHAR(1) NOT NULL DEFAULT 0 COMMENT '是否删除（无效）：0-有效；1-无效',
+  `sys_userStatus` VARCHAR(6) NOT NULL DEFAULT 0 COMMENT '用户状态：0-正常在职',
+  PRIMARY KEY (`sys_userId`),
+  UNIQUE INDEX `sys_userId_UNIQUE` (`sys_userId` ASC))
+COMMENT = '后台管理系统人员表';
+
+ALTER TABLE `assistant`.`sys_user`
+CHANGE COLUMN `is_deleted` `is_deleted` BIT NOT NULL DEFAULT 0 COMMENT '是否删除（无效）：0-有效；1-无效' ;
+
+
+
+CREATE TABLE `assistant`.`sys_role` (
+  `sys_roleId` INT NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `sys_roleName` VARCHAR(200) NOT NULL DEFAULT '\"\"' COMMENT '角色名称',
+  `sys_roleDesc` VARCHAR(4000) NULL COMMENT '角色描述',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '角色创建时间',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_deleted` BIT NOT NULL DEFAULT 0 COMMENT '是否删除：0-有效；1-无效',
+  PRIMARY KEY (`sys_roleId`),
+  UNIQUE INDEX `sys_roleId_UNIQUE` (`sys_roleId` ASC),
+  UNIQUE INDEX `sys_roleName_UNIQUE` (`sys_roleName` ASC))
+COMMENT = '角色表';
+
+
+CREATE TABLE `assistant`.`sys_user_role` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `sys_userId` BIGINT NOT NULL COMMENT '用户id',
+  `sys_roleId` BIGINT NOT NULL COMMENT '角色id',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  `is_deleted` BIT NOT NULL DEFAULT 0 COMMENT '是否删除',
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
+COMMENT = '用户角色表';
+

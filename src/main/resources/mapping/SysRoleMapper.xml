@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.farmerassistant.mapper.SysRoleMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.farmerassistant.model.SysRole" >
+    <id column="sys_roleId" property="sysRoleid" jdbcType="INTEGER" />
+    <result column="sys_roleName" property="sysRolename" jdbcType="VARCHAR" />
+    <result column="sys_roleDesc" property="sysRoledesc" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sys_roleId, sys_roleName, sys_roleDesc, create_time, update_time, is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role
+    where sys_roleId = #{sysRoleid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_role
+    where sys_roleId = #{sysRoleid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.farmerassistant.model.SysRole" >
+    insert into sys_role (sys_roleId, sys_roleName, sys_roleDesc, 
+      create_time, update_time, is_deleted
+      )
+    values (#{sysRoleid,jdbcType=INTEGER}, #{sysRolename,jdbcType=VARCHAR}, #{sysRoledesc,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.farmerassistant.model.SysRole" >
+    insert into sys_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sysRoleid != null" >
+        sys_roleId,
+      </if>
+      <if test="sysRolename != null" >
+        sys_roleName,
+      </if>
+      <if test="sysRoledesc != null" >
+        sys_roleDesc,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sysRoleid != null" >
+        #{sysRoleid,jdbcType=INTEGER},
+      </if>
+      <if test="sysRolename != null" >
+        #{sysRolename,jdbcType=VARCHAR},
+      </if>
+      <if test="sysRoledesc != null" >
+        #{sysRoledesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.farmerassistant.model.SysRole" >
+    update sys_role
+    <set >
+      <if test="sysRolename != null" >
+        sys_roleName = #{sysRolename,jdbcType=VARCHAR},
+      </if>
+      <if test="sysRoledesc != null" >
+        sys_roleDesc = #{sysRoledesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+    </set>
+    where sys_roleId = #{sysRoleid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.farmerassistant.model.SysRole" >
+    update sys_role
+    set sys_roleName = #{sysRolename,jdbcType=VARCHAR},
+      sys_roleDesc = #{sysRoledesc,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=BIT}
+    where sys_roleId = #{sysRoleid,jdbcType=INTEGER}
+  </update>
+</mapper>
