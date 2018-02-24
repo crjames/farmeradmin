@@ -1,7 +1,11 @@
-package main.java.com.farmerassistant.mapper;
+package com.farmerassistant.mapper;
 
-import main.java.com.farmerassistant.model.SysUser;
+import com.farmerassistant.model.SysUser;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+@Mapper
+@Component(value = "sysUserMapper")
 public interface SysUserMapper {
     int deleteByPrimaryKey(Long sysUserid);
 
@@ -14,4 +18,6 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    SysUser findByJobNumber(String sysUserjobnumber);
 }

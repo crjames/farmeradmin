@@ -1,6 +1,6 @@
-package main.java.com.farmerassistant.mapper;
+package com.farmerassistant.mapper;
 
-import main.java.com.farmerassistant.model.SysUserRole;
+import com.farmerassistant.model.SysUserRole;
 
 public interface SysUserRoleMapper {
     int deleteByPrimaryKey(Long id);

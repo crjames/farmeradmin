@@ -1,4 +1,4 @@
-package main.java.com.farmerassistant.model;
+package com.farmerassistant.model;
 
 import java.util.Date;
 
@@ -61,5 +61,17 @@ public class SysRole {
 
     public void setIsDeleted(Boolean isDeleted) {
         this.isDeleted = isDeleted;
+    }
+
+    @Override
+    public String toString() {
+        return "SysRole{" +
+                "sysRoleid=" + sysRoleid +
+                ", sysRolename='" + sysRolename + '\'' +
+                ", sysRoledesc='" + sysRoledesc + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", isDeleted=" + isDeleted +
+                '}';
     }
 }

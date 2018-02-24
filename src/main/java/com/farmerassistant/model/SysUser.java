@@ -1,6 +1,8 @@
-package main.java.com.farmerassistant.model;
+package com.farmerassistant.model;
+
 
 import java.util.Date;
+import java.util.List;
 
 public class SysUser {
     private Long sysUserid;
@@ -28,6 +30,16 @@ public class SysUser {
     private Boolean isDeleted;
 
     private String sysUserstatus;
+
+    public List<SysRole> getSysRoles() {
+        return sysRoles;
+    }
+
+    public void setSysRoles(List<SysRole> sysRoles) {
+        this.sysRoles = sysRoles;
+    }
+
+    private List<SysRole> sysRoles;
 
     public Long getSysUserid() {
         return sysUserid;
@@ -131,5 +143,25 @@ public class SysUser {
 
     public void setSysUserstatus(String sysUserstatus) {
         this.sysUserstatus = sysUserstatus == null ? null : sysUserstatus.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "sysUserid=" + sysUserid +
+                ", sysUsername='" + sysUsername + '\'' +
+                ", sysUserpwd='" + sysUserpwd + '\'' +
+                ", sysUsersex='" + sysUsersex + '\'' +
+                ", sysUserresumeurl='" + sysUserresumeurl + '\'' +
+                ", sysUserentrytime=" + sysUserentrytime +
+                ", sysUserleavetime=" + sysUserleavetime +
+                ", sysUserrank='" + sysUserrank + '\'' +
+                ", sysUserjobnumber='" + sysUserjobnumber + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", isDeleted=" + isDeleted +
+                ", sysUserstatus='" + sysUserstatus + '\'' +
+                ", sysRoles=" + sysRoles +
+                '}';
     }
 }
