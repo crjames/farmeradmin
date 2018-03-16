@@ -1,13 +1,13 @@
 package com.farmerassistant.security;
 
-import com.farmerassistant.mapper.SysUserMapper;
+/*import com.farmerassistant.mapper.SysUserMapper;
 import com.farmerassistant.model.SysRole;
 import com.farmerassistant.model.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;*/
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,9 +16,9 @@ import java.util.List;
 /**
  * Created by wang.donga on 2018/2/24.
  */
-@Service
-public class CustomUserService implements UserDetailsService {
-    @Autowired
+@Service(value="userService")
+public class CustomUserService {//implements UserDetailsService {
+    /*@Autowired
     private SysUserMapper sysUserMapper;
     @Override
     public UserDetails loadUserByUsername(String userjobNumber) throws UsernameNotFoundException {
@@ -35,5 +35,5 @@ public class CustomUserService implements UserDetailsService {
         }
         return new org.springframework.security.core.userdetails.User(sysUser.getSysUserjobnumber(),
                 sysUser.getSysUserpwd(), authorities);
-    }
+    }*/
 }

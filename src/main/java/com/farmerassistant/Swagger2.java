@@ -1,4 +1,4 @@
-package com.farmerassistant.config;
+package com.farmerassistant;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +11,11 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * Created by wang.donga on 2018/2/24.
+ * Created by wang.donga on 2018/3/16.
  */
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig {
+public class Swagger2 {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)

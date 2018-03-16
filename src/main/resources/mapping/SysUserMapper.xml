@@ -38,7 +38,9 @@
 
   <select id="findByJobNumber" resultMap="sysUserMap" parameterType="java.lang.String" >
     select
-    u.*,r.sys_roleName,r.sys_roleDesc
+    <include refid="Base_Column_List_u" />,r.sys_roleName,r.sys_roleDesc,(CASE WHEN u.sys_userSex = '0' THEN '男'
+         WHEN u.sys_userSex = '1' THEN '女'
+         ELSE '其他' END) as sys_userSex
     from sys_user u
     left join sys_user_role sur on u.sys_userId=sur.sys_userId
     left join sys_role r on r.sys_roleId=sur.sys_roleId
@@ -48,6 +50,11 @@
     sys_userId, sys_userName, sys_userPwd, sys_userSex, sys_userResumeUrl, sys_userEntryTime, 
     sys_userLeaveTime, sys_userRank, sys_userJobNumber, create_time, update_time, is_deleted, 
     sys_userStatus
+  </sql>
+  <sql id="Base_Column_List_u" >
+    u.sys_userId, u.sys_userName, u.sys_userPwd,u.sys_userResumeUrl, u.sys_userEntryTime,
+    u.sys_userLeaveTime, u.sys_userRank, u.sys_userJobNumber, u.create_time, u.update_time, u.is_deleted,
+    u.sys_userStatus
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
